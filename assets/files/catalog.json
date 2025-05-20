@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 13 Pro",
+      "desc": "Apple iPhone 13 Pro with A15 Bionic chip and triple-camera system.",
+      "price": 999,
+      "color": "Graphite",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg"
+    },
+    {
+      "id": 2,
+      "name": "iPhone 13",
+      "desc": "Apple iPhone 13 with A15 Bionic chip and dual-camera system.",
+      "price": 799,
+      "color": "Blue",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg"
+    },
+    {
+      "id": 3,
+      "name": "iPhone 14 Pro Max",
+      "desc": "Apple iPhone 14 Pro Max with Dynamic Island and always-on display.",
+      "price": 1099,
+      "color": "Deep Purple",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-max-1.jpg"
+    },
+    {
+      "id": 4,
+      "name": "iPhone 14",
+      "desc": "Apple iPhone 14 with A15 Bionic chip and new safety features.",
+      "price": 899,
+      "color": "Midnight",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-3.jpg"
+    },
+    {
+      "id": 5,
+      "name": "iPhone SE (3rd Gen)",
+      "desc": "Apple iPhone SE with A15 Bionic chip and compact design.",
+      "price": 429,
+      "color": "Red",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16e-1.jpg"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import 'package:fluter_catalog/pages/home_details_page.dart';
 import 'package:fluter_catalog/pages/home_page.dart';
 import 'package:fluter_catalog/pages/login_page.dart';
 import 'package:fluter_catalog/widgets/themes.dart';

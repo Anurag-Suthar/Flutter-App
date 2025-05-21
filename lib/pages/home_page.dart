@@ -1,9 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
+import 'package:fluter_catalog/pages/home_widgets/catalog_header.dart';
+import 'package:fluter_catalog/pages/home_widgets/catalog_list.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:fluter_catalog/models/catalog.dart';
 import 'package:fluter_catalog/widgets/drawer.dart';
 import 'package:fluter_catalog/widgets/item_widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
+import 'package:fluter_catalog/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,51 +44,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Catalog App")),
+      backgroundColor: AppTheme.creamColor,
+      body: SafeArea(
+        child: Container(
+          padding: Vx.m32,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CatalogHeader(),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child:
-            (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                ? GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                  ),
-                  itemCount: CatalogModel.items.length,
-                  itemBuilder: (context, index) {
-                    final item = CatalogModel.items[index];
-                    return Card(
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: GridTile(
-                        header: Container(
-                          child: Text(
-                            item.name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          decoration: BoxDecoration(color: Colors.blue[800]),
-                          padding: EdgeInsets.all(12),
-                        ),
-                        child: Image.network(item.image),
-                        footer: Container(
-                          child: Text(
-                            item.price.toString(),
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(color: Colors.black),
-                        ),
-                      ),
-                    );
-                  },
-                )
-                : Center(child: CircularProgressIndicator()),
+              if (CatalogModel.items.length != 0 &&
+                  CatalogModel.items.isNotEmpty)
+                CataLogList().expand()
+              else
+                CircularProgressIndicator().centered().expand(),
+            ],
+          ),
+        ),
       ),
-      drawer: MyDrawer(),
     );
   }
 }

@@ -54,26 +54,32 @@ class CatalogItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   catalog.name.text.lg
-                      .color(AppTheme.darkBluishColor)
+                      .color(context.theme.hintColor)
                       .bold
                       .make(),
-                  catalog.desc.text.textStyle(context.captionStyle).make(),
+                  catalog.desc.text
+                      .textStyle(context.captionStyle)
+                      .color(context.theme.hintColor)
+                      .make(),
                   10.heightBox,
                   OverflowBar(
                     alignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-                      "\$${catalog.price}".text.bold.xl.make(),
+                      "\$${catalog.price}".text.bold.xl
+                          .color(context.theme.hintColor)
+                          .make(),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor: WidgetStateProperty.all(
-                              AppTheme.darkBluishColor,
+                              AppTheme.getButtonColor(context),
                             ),
                           ),
+
                           onPressed: () => {},
-                          child: "Buy".text.color(Vx.white).make(),
+                          child: "Add to cart".text.color(Vx.white).make(),
                         ),
                       ),
                     ],
@@ -84,6 +90,6 @@ class CatalogItem extends StatelessWidget {
           ),
         ],
       ),
-    ).white.roundedLg.square(150).make().py16();
+    ).color(context.cardColor).roundedLg.square(150).make().py16();
   }
 }

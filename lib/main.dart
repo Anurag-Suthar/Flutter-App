@@ -1,3 +1,4 @@
+import 'package:fluter_catalog/core/store.dart';
 import 'package:fluter_catalog/pages/card_page.dart';
 import 'package:fluter_catalog/pages/home_details_page.dart';
 import 'package:fluter_catalog/pages/home_page.dart';
@@ -11,20 +12,21 @@ import './utils/routes.dart';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
   FlutterError.onError = (details) {
     FlutterError.presentError(details);
     if (kReleaseMode) exit(1);
   };
-  runApp(MyApp());
+  runApp((VxState(store: AppStore(), child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
       initialRoute: AppRoutes.homeRoute,

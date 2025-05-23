@@ -1,10 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:fluter_catalog/widgets/home_widgets/add_to_cart.dart';
+import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+import 'package:fluter_catalog/models/cart.dart';
 import 'package:fluter_catalog/models/catalog.dart';
 import 'package:fluter_catalog/pages/home_details_page.dart';
 import 'package:fluter_catalog/utils/routes.dart';
 import 'package:fluter_catalog/widgets/home_widgets/catalog_image.dart';
 import 'package:fluter_catalog/widgets/themes.dart';
-import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CataLogList extends StatelessWidget {
   const CataLogList({super.key});
@@ -71,16 +75,7 @@ class CatalogItem extends StatelessWidget {
                           .make(),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStateProperty.all(
-                              AppTheme.getButtonColor(context),
-                            ),
-                          ),
-
-                          onPressed: () => {},
-                          child: "Add to cart".text.color(Vx.white).make(),
-                        ),
+                        child: AddToCart(catalog: catalog),
                       ),
                     ],
                   ),

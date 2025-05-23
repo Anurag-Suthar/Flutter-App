@@ -10,8 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:fluter_catalog/models/catalog.dart';
-import 'package:fluter_catalog/widgets/drawer.dart';
-import 'package:fluter_catalog/widgets/item_widgets.dart';
 import 'package:fluter_catalog/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {

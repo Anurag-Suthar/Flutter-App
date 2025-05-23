@@ -1,3 +1,5 @@
+import 'package:fluter_catalog/core/store.dart';
+import 'package:fluter_catalog/models/cart.dart';
 import 'package:fluter_catalog/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -21,16 +23,23 @@ class CardPage extends StatelessWidget {
 }
 
 class _CardTotal extends StatelessWidget {
-  const _CardTotal({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as AppStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$1000".text.xl5.color(context.theme.hintColor).make(),
+          VxConsumer(
+            notifications: {},
+            mutations: {RemoveMutation},
+            builder: (context, _, status) {
+              return "\$${_cart.totalPrice}".text.xl5
+                  .color(context.theme.hintColor)
+                  .make();
+            },
+          ),
           30.widthBox,
           ElevatedButton(
             style: ButtonStyle(
@@ -53,26 +62,32 @@ class _CardTotal extends StatelessWidget {
   }
 }
 
-class _CardList extends StatefulWidget {
-  const _CardList({super.key});
-
-  @override
-  State<_CardList> createState() => __CardListState();
-}
-
-class __CardListState extends State<_CardList> {
+class _CardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder:
-          (context, index) => ListTile(
-            leading: Icon(Icons.done),
-
-            title: "Item $index".text.make(),
-            subtitle: "Item $index".text.make(),
-            trailing: IconButton(onPressed: () => {}, icon: Icon(Icons.delete)),
-          ),
+    final CartModel _cart = (VxState.store as AppStore).cart;
+    return VxBuilder(
+      mutations: {RemoveMutation},
+      builder: (context, store, status) {
+        return _cart.items.isEmpty
+            ? "Nothing to Show".text
+                .color(context.theme.hintColor)
+                .xl3
+                .makeCentered()
+            : ListView.builder(
+              itemCount: _cart.items.length,
+              itemBuilder:
+                  (context, index) => ListTile(
+                    leading: Icon(Icons.done),
+                    title: _cart.items[index].name.text.make(),
+                    // subtitle: "Item $index".text.make(),
+                    trailing: IconButton(
+                      onPressed: () => {RemoveMutation(_cart.items[index])},
+                      icon: Icon(Icons.delete),
+                    ),
+                  ),
+            );
+      },
     );
   }
 }

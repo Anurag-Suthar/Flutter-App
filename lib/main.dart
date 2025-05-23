@@ -1,13 +1,10 @@
 import 'package:fluter_catalog/core/store.dart';
 import 'package:fluter_catalog/pages/card_page.dart';
-import 'package:fluter_catalog/pages/home_details_page.dart';
 import 'package:fluter_catalog/pages/home_page.dart';
 import 'package:fluter_catalog/pages/login_page.dart';
 import 'package:fluter_catalog/widgets/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'dart:developer';
+
 import './utils/routes.dart';
 import 'dart:io';
 
@@ -23,6 +20,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

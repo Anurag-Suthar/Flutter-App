@@ -1,3 +1,4 @@
+import 'package:fluter_catalog/pages/card_page.dart';
 import 'package:fluter_catalog/pages/home_details_page.dart';
 import 'package:fluter_catalog/pages/home_page.dart';
 import 'package:fluter_catalog/pages/login_page.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => LoginPage(),
         AppRoutes.loginRoute: (context) => LoginPage(),
         AppRoutes.homeRoute: (context) => HomePage(),
+        AppRoutes.cartRoute: (context) => CardPage(),
       },
     );
   }

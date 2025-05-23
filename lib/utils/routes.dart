@@ -2,4 +2,5 @@ class AppRoutes {
   static String loginRoute = '/login';
   static String homeRoute = '/home';
   static String homeDetailRoute = '/home-detail';
+  static String cartRoute = '/cart';
 }

@@ -37,7 +37,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       color: Colors.black,
       elevation: 0.0,
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.white),
     ),
   );
 

@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:fluter_catalog/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fluter_catalog/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -50,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.canvasColor,
       body: Form(
         key: _formKey,
         child: Column(
@@ -58,10 +60,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 40),
             Image.asset("assets/images/login-img.png", fit: BoxFit.contain),
             const SizedBox(height: 16),
-            Text(
-              "Welcome $_username",
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
+            "Welcome $_username".text.xl4.color(context.theme.hintColor).make(),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
@@ -101,30 +100,40 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed:
-                          _isLoading
-                              ? null
-                              : () {
-                                if (_formKey.currentState!.validate()) {
-                                  _handleLogin();
-                                }
-                              },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(100, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: AppTheme.getButtonColor(
+                          context,
+                        ), // Set background color
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child:
-                          _isLoading
-                              ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                              : const Text(
-                                "Login",
-                                style: TextStyle(fontSize: 18),
-                              ),
+                      child: ElevatedButton(
+                        onPressed:
+                            _isLoading
+                                ? null
+                                : () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _handleLogin();
+                                  }
+                                },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(100, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          backgroundColor:
+                              Colors.transparent, // Make button transparent
+                          shadowColor: Colors.transparent, // Remove shadow
+                        ),
+                        child:
+                            _isLoading
+                                ? const CircularProgressIndicator(
+                                  color: Colors.white,
+                                )
+                                : "Login".text.xl
+                                    .color(context.theme.cardColor)
+                                    .make(),
+                      ),
                     ),
                   ),
                 ],

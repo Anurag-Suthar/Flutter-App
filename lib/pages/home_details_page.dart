@@ -15,26 +15,29 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
-      backgroundColor: AppTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child:
             OverflowBar(
               alignment: MainAxisAlignment.spaceBetween,
-
+              spacing: 0,
+              overflowSpacing: 0,
               children: [
                 "\$${catalog.price}".text.bold.xl4.red800.make(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
+                  padding: const EdgeInsets.all(0),
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(
                         AppTheme.darkBluishColor,
                       ),
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      shape: WidgetStateProperty.all(StadiumBorder()),
                     ),
                     onPressed: () => {},
-                    child: "Buy".text.xl.color(Vx.white).make(),
-                  ).wh(100, 50),
+                    child: "Add to card".text.color(Vx.white).make(),
+                  ).wh(120, 50),
                 ),
               ],
             ).p32(),
@@ -45,7 +48,7 @@ class HomeDetailPage extends StatelessWidget {
           children: [
             Hero(
               tag: Key(catalog.id.toString()),
-              child: Image.network(catalog.image),
+              child: Image.asset(catalog.image),
             ).h32(context),
             Expanded(
               child: VxArc(
@@ -53,21 +56,23 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.convex,
                 edge: VxEdge.top,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child:
                       Column(
                         children: [
                           catalog.name.text.xl4
-                              .color(AppTheme.darkBluishColor)
+                              .color(context.theme.hintColor)
                               .bold
                               .make(),
                           catalog.desc.text
+                              .color(context.theme.hintColor)
                               .textStyle(context.captionStyle)
                               .make(),
                           10.heightBox,
                           "Deserunt adipisicing in non aute. Consectetur elit deserunt veniam cillum quis aliquip nulla ea deserunt aute. Incididunt pariatur amet aute quis dolor qui id dolore non voluptate non. Ea pariatur excepteur laborum deserunt officia nostrud officia. Laboris magna sit nostrud tempor consectetur anim. Dolore ex sit veniam et nostrud velit nostrud reprehenderit."
                               .text
+                              .color(context.theme.hintColor)
                               .textStyle(context.captionStyle)
                               .make()
                               .p16(),
